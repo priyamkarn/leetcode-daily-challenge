@@ -1,0 +1,23 @@
+//we first put elements from list to array and then apply binary search(root is middle element)
+TreeNode* constructBST(vector<int>& arr, int left, int right) {
+        if (left > right) {
+            return nullptr;
+        }
+        //as tree is sorted,middle element is root as lefter elements are smaller and righter elements are greater
+        int mid = (left + right) / 2;
+        TreeNode* root = new TreeNode(arr[mid]);
+        root->left = constructBST(arr, left, mid - 1);
+        root->right = constructBST(arr, mid + 1, right);
+        return root;
+    }
+    TreeNode* sortedListToBST(ListNode* head) {
+         vector<int> arr;
+        ListNode* curr = head;
+        while (curr) {
+            arr.push_back(curr->val);
+            curr = curr->next;
+        }
+        
+       
+        return constructBST(arr, 0, arr.size() - 1);
+    }
