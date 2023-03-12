@@ -1,0 +1,26 @@
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+      priority_queue<pair<int,ListNode*>,vector<pair<int,ListNode*>>,greater<pair<int,ListNode*>>>pq;
+      for(auto it:lists)
+      {
+          if(it!=NULL)
+          {
+              //only head is pushed here
+              pq.push(make_pair(it->val,it));
+          }
+      }
+      ListNode* ptr=new ListNode(-1);
+      ListNode* temp=ptr;
+      while(!pq.empty())
+      {
+          int data=pq.top().first;
+          ListNode* node=pq.top().second;
+          pq.pop();
+          if(node->next)
+          {
+              pq.push(make_pair(node->next->val,node->next));
+          }
+          temp->next=node;
+          temp=node;
+      }
+      return ptr->next;
+    }
