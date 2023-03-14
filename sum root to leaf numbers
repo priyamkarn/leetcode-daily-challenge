@@ -1,0 +1,24 @@
+int ans=0;
+    void add(TreeNode* root,int numtillnow)
+    {
+        if(root==NULL)
+        {
+            return;
+        }
+        numtillnow*=10;
+        numtillnow+=root->val;
+        if(root->left==NULL && root->right==NULL)
+        {
+            ans+=numtillnow;
+            return;
+        }
+        add(root->left,numtillnow);
+        add(root->right,numtillnow);
+        return;
+    }
+    int sumNumbers(TreeNode* root) 
+    {
+        add(root,0);
+        return ans;
+    }
+};
