@@ -1,0 +1,23 @@
+bool isCompleteTree(TreeNode* root) {
+    if (!root) {
+        return true;
+    }
+    queue<TreeNode*> q;
+    q.push(root);
+    bool flag = false;
+    while (!q.empty()) {
+        auto curr = q.front();
+        q.pop();
+        if (!curr) {
+            flag = true;
+        }
+        else {
+            if (flag) {
+                return false;
+            }
+            q.push(curr->left);
+            q.push(curr->right);
+        }
+    }
+    return true;
+}
