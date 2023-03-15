@@ -1,3 +1,4 @@
+//jha node nhi aya us place se koi v node nhi aana chhye
 bool isCompleteTree(TreeNode* root) {
     if (!root) {
         return true;
