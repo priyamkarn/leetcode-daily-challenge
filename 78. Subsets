@@ -1,0 +1,19 @@
+void solve(vector<int>temp,vector<vector<int>>&ans,vector<int>&nums,int i,int n)
+{
+    if(i>=n)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    temp.push_back(nums[i]);
+    solve(temp,ans,nums,i+1,n);
+    temp.pop_back();
+    solve(temp,ans,nums,i+1,n);
+}
+    vector<vector<int>> subsets(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>temp;
+        vector<vector<int>>ans;
+        solve(temp,ans,nums,0,n);
+        return ans;
+    }
