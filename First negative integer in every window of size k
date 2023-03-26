@@ -1,0 +1,38 @@
+ vector<long long> res;
+    deque<long long> dq;  // store indices of negative integers in current window
+
+    // find first negative integer in first window of size K
+    for (long long i = 0; i < k; i++) {
+        if (A[i] < 0) {
+            dq.push_back(i);
+        }
+    }
+
+    // store first negative integer of first window
+    if (!dq.empty()) {
+        res.push_back(A[dq.front()]);
+    } else {
+        res.push_back(0);  // no negative integer in first window
+    }
+
+    // find first negative integer in each subsequent window of size K
+    for (long long i = k; i < n; i++) {
+        // remove indices outside current window
+        while (!dq.empty() && dq.front() <= i - k) {
+            dq.pop_front();
+        }
+
+        // add index of negative integer in current window
+        if (A[i] < 0) {
+            dq.push_back(i);
+        }
+
+        // store first negative integer of current window
+        if (!dq.empty()) {
+            res.push_back(A[dq.front()]);
+        } else {
+            res.push_back(0);  // no negative integer in current window
+        }
+    }
+
+    return res;
