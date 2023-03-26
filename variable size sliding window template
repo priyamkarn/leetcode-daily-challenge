@@ -1,0 +1,14 @@
+  int l=0;
+        int r=0;
+        int n=nums.size();
+        int ans=0;
+        for(;r<n;r++)
+        {
+         //new element enters and might make the window invalid.    
+            for(;iswindowinvalid()>1;l++)
+            {
+                //try to make window valid again
+            }
+            ans=max(ans,r-l+1);
+        }
+        return ans;
