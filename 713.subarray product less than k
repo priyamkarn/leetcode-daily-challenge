@@ -1,0 +1,17 @@
+ int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+        long l=0;
+        long r=0;
+        long n=nums.size();
+        int ans=0;
+        long prod=1;
+        for(;r<n;r++)
+        {
+            prod=prod*nums[r];
+            for(;prod>=k&&l<=r;l++)
+            {
+                prod=prod/nums[l];
+            }
+            ans=ans+(r-l+1);
+        }
+        return ans;
+    }
