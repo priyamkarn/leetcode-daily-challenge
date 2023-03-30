@@ -28,7 +28,9 @@ class NumArray {
 
         return leftSum + rightSum;
     }
-
+left,right=range
+ss=starting index of segment tree
+se=ending index of segment tree
     int update(int index, int newValue, int ss, int se, int node) {
         int leftSum, rightSum;
         int middle;
