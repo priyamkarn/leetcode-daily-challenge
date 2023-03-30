@@ -18,8 +18,9 @@ class NumArray {
     int sumRange(int left, int right, int ss, int se, int node) {
         int leftSum, rightSum;
         int middle;
-
+        //simple logic,no overlap
         if (right < ss || left > se) return 0;
+        //pura ss aur se cover.
         if (left <= ss && se <= right) return seg[node];
 
         middle = (ss + se) / 2;
