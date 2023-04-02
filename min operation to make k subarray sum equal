@@ -3,6 +3,8 @@ public:
     vector<int> cmp;
     vector<vector<int>> cmps;
     void dfs(int node, vector<int> &vis, vector<int> &arr, int k) {
+    //array is circular given in question
+    //https://leetcode.com/problems/make-k-subarray-sums-equal/submissions/926611045/
         int n = vis.size();
         vis[node] = 1;
         cmp.push_back(arr[node]);
