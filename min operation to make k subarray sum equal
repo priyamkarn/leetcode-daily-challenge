@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<int> cmp;
+    vector<vector<int>> cmps;
+    void dfs(int node, vector<int> &vis, vector<int> &arr, int k) {
+        int n = vis.size();
+        vis[node] = 1;
+        cmp.push_back(arr[node]);
+        node = (node + k) % n;
+        if (!vis[node])
+            dfs(node, vis, arr, k);
+    }
+    long long makeSubKSumEqual(vector<int> &arr, int k) {
+        int n = arr.size();
+        vector<int> vis(n, 0);
+        for (int i = 0; i < n; i++) {
+            if (!vis[i]) {
+                dfs(i, vis, arr, k);
+                cmps.push_back(cmp);
+                cmp.clear();
+            }
+        }
+        long long res = 0;
+        for (auto cmp : cmps) {
+            sort(cmp.begin(), cmp.end());
+            int len = cmp.size();
+            int med = cmp[len / 2];
+            long long ans = 0;
+            for (auto num : cmp) {
+                ans += abs(num - med);
+            }
+            res += ans;
+        }
+        return res;
+    }
+};
