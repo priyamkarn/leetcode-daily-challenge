@@ -1,5 +1,6 @@
 vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
         vector<int>ans;
+        //sort karne ke bad agr potion[mid]*speel[i]greater ho jaye success se to uske right wala sab greater hi hoga
         sort(potions.begin(), potions.end());
         
         for (int i = 0; i < spells.size(); i++) {
