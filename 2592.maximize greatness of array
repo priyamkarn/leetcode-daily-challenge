@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maximizeGreatness(vector<int>& nums) {
+     sort(nums.begin(),nums.end());//bcz order is not important as we want to permute and compare
+        int ans=0;
+        int index=0;
+        //i jo h wo pure array me ghum ke check krega
+        //example=[1,2,3,4],i=1,nums[i]=1,kya i bara h,nhi,i 2 nums[index]=1,ha ,ans++
+        for(auto i:nums)
+        {
+            if(i>nums[index])
+            {
+                ans++;
+                index++;
+            }
+        }
+        return ans;
+    }
+};
