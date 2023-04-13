@@ -1,0 +1,32 @@
+class Solution {
+public:
+int atmostk(vector<int> &s,int k)
+{
+    int left=0;
+    int right=0;
+    int ans=0;
+    unordered_map<int,int>ump;
+    for(right=0;right<s.size();right++)
+    {
+        ump[s[right]]++;
+        if(ump[s[right]]==1)
+        {
+            k--;
+        }
+        while(k<0)
+        {
+            ump[s[left]]--;
+            if(ump[s[left]]==0)
+            {
+                k++;
+            }
+            left++;
+        }
+        ans += right - left + 1;
+    }
+    return ans;
+}
+    int subarraysWithKDistinct(vector<int>& nums, int k) {
+    return atmostk(nums, k) - atmostk(nums, k - 1);
+    }
+};
