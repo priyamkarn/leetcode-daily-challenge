@@ -1,0 +1,2 @@
+count no of subarray equal k
+atmost(k+1)-atmost(k)
