@@ -1,0 +1,4 @@
+1.Another type of question that doesn't work, is if adding one new element could either increase or decrease the window's state.
+2."palindrome" questions 
+3.Sliding window doesn't work if knowing one element at the edges of the window, does not tell you how to update the state of the window,
+or whether it becomes valid.
