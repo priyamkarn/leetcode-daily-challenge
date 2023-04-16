@@ -1,0 +1,40 @@
+
+Given a m x n binary matrix mat, find the 0-indexed position of the row that contains the maximum count of ones, and the number of ones in that row.
+
+In case there are multiple rows that have the maximum count of ones, the row with the smallest row number should be selected.
+
+Return an array containing the index of the row, and the number of ones in it.
+
+ class Solution {
+public:
+    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+        map<int,int>ump;
+        int maxi=0;
+        int r=0;
+        int row=mat.size();
+        int col=mat[0].size();
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<mat[i].size();j++)
+            {
+                if(mat[i][j]==1)
+                {
+                    ump[i]++;
+                }
+            }
+        }
+        vector<int>ans;
+        for(auto it:ump)
+        {
+            
+            if(it.second>maxi)
+            {
+                r=it.first;
+                maxi=it.second;
+            }
+        }
+        ans.emplace_back(r);
+        ans.emplace_back(maxi);
+        return ans;
+    }
+};
