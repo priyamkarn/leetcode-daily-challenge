@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int addMinimum(string word) {
+        stack<char>st;
+        for(char c: word)
+        {
+            st.push(c);
+        }
+        int c=0;
+        while(!st.empty())
+        {
+            if(!st.empty() && st.top()=='c')
+            {
+                st.pop();
+            }
+            else c++;
+            if(!st.empty() && st.top()=='b')
+            {
+                st.pop();
+            }
+            else c++;
+            if(!st.empty() && st.top()=='a')
+            {
+                st.pop();
+            }
+            else c++;
+        }
+        return c;
+    }
+};
