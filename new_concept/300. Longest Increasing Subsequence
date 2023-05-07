@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>lis;
+        vector<int>res(n,1);
+        for(int i=0;i<n;i++)
+        {
+            //usse just chota
+            int idx=upper_bound(begin(lis),end(lis),nums[i]-1)-begin(lis);
+            //idx is size of lis upto that nums
+            if(idx==lis.size())
+            {
+                lis.push_back(nums[i]);
+            }
+            else
+            {
+                lis[idx]=nums[i];
+            }
+            
+        }
+        //last me longest lis ka size
+       return lis.size();
+    }
+};
