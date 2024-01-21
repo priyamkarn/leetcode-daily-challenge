@@ -1,0 +1,16 @@
+int minimumPushes(string word) {
+        unordered_map<int,int>ump;
+        int assign_key=2;
+        int res=0;
+        for(char &ch:word)
+        {
+            if(assign_key>9)
+            {
+                assign_key=2;
+            }
+            ump[assign_key]++;
+            res+=ump[assign_key];
+            assign_key++;
+        }
+        return res;
+    }
